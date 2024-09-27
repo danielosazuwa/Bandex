@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload</title>
+  </head>
+  <link rel="stylesheet" href=" /style.css" />
+  <body>
+    <div class="form-container-upload">
+      <h2>UPDATE UPLOAD</h2>
+
+      <form
+        action="/edit-upload/<%= data.id %>?_method=PUT"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <div class="form-group">
+          <img
+            id="updatePicFrame"
+            src="/<%= data.file %>"
+            alt="current picture"
+          />
+        </div>
+
+        <div class="form-group">
+          <div class="preview-container">
+            <h3>
+              Preview:
+              <p style="font-style: italic">(file must not exceed 10mb)</p>
+            </h3>
+            <img id="preview" class="preview-image" />
+          </div>
+          <label for="myfile">Change Picture below 👇</label>
+          <input
+            type="file"
+            id="myfile"
+            name="myFile"
+            onclick="document.getElementById('updatePicFrame').remove()"
+            onchange="previewImage(event)"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="brand">Brand</label>
+          <input
+            type="text"
+            name="brand"
+            value="<%= data.brand %>"
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="price">Price</label>
+          <input
+            type="number"
+            name="price"
+            value="<%= data.price %>"
+            autocomplete="off"
+          />
+        </div>
+        <button type="submit" class="submit-btn">Save changes</button>
+      </form>
+    </div>
+  </body>
+  <script>
+    function previewImage(event) {
+      var reader = new FileReader();
+      reader.onload = function () {
+        var output = document.getElementById("preview");
+        output.src = reader.result;
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  </script>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup</title>
+  </head>
+  <link rel="stylesheet" href=" /style.css" />
+  <body>
+    <div class="form-container">
+      <h2 class="text-white">SIGNUP</h2>
+      <form action="/signup" method="post">
+        <div class="form-group">
+          <label class="text-white" for="name">E-mail</label>
+          <input
+            type="text"
+            id="email"
+            name="email"
+            placeholder="E-mail"
+            required
+            autocomplete="off"
+          />
+        </div>
+        <div class="err">
+          <% if(locals.err){%>
+          <h4><%=err %></h4>
+          <%} %>
+
+        </div>
+        <div class="form-group">
+          <label class="text-white" for="password">Password</label>
+          <input
+            type="password"
+            id="pswrd"
+            name="password"
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+        <div class="text-white">
+          <input type="checkbox" onclick="toggleVisibility()"/> 
+          Show password</br>
+        </div>
+        <% if(locals.error){%>
+          <h4><%=error %></h4>
+          <%} %>
+        <button type="submit" class="submit-btn">Sign Up</button>
+      </form>
+      <p class="text-white">Already have an account? <a class="text-white" href="/">Login</a></p>
+    </div>
+    <script>  
+      function toggleVisibility() {  
+        var getPasword = document.getElementById("pswrd");  
+        if (getPasword.type === "password") {  
+          getPasword.type = "text";  
+        } else {  
+          getPasword.type = "password";  
+        }  
+      }  
+      </script>  
+  </body>
+</html>

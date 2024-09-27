@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <tr>
+      <% for(var i = 0; i < users.length;i++){%> <%= i + 1%> <%= users[i].name
+      %><a href="/update-user?id=<%= users[i]._id %>">Check details</a
+      ><br />
+
+      <%}%>
+    </tr>
+  </body>
+</html>

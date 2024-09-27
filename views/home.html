@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BANDEX</title>
+    <link
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/public/root.css" />
+  </head>
+  <body>
+    <header>
+      <div class="slider-container">
+        <a href="#" class="slider-trigger">
+          <i class="fa fa-th fa-2x icon-white" aria-hidden="true"></i
+        ></a>
+
+        <div class="slider-parent">
+          <a class="text-white rmv-decor hover" href="">Home</a> <br />
+          <a class="text-white rmv-decor hover" href="">Shop</a> <br />
+        </div>
+      </div>
+
+      <div class="brandName">
+        <h1 class="text-white">BANDEX</h1>
+      </div>
+
+      <div class="shopButton">
+        <button class="text-white btn-bg">SHOP<br />NOW</button>
+      </div>
+    </header>
+
+    <!--HERO SECTION BEGINS-->
+    <div class="heroSection">
+      <div class="model1">
+        <img src="/public/img/model1.jpg" alt="model1" />
+      </div>
+
+      <div class="model2">
+        <img src="/public/img/model2.jpg" alt="model2" />
+      </div>
+    </div>
+    <!--HERO SECTION ENDS-->
+
+    <!--SHOPPING SECTION BEGINS-->
+    <div class="shoppingSection bg-white">
+      <div class="shoppingSectionH2">
+        <h2 class="text-center">SHOP NEW ARRIVALS</h2>
+      </div>
+
+      <div class="shopList">
+        <div class="item">
+          <img src="/public/img/gown.jpg" alt="gowns" />
+          <figcaption>GOWNS</figcaption>
+        </div>
+
+        <div class="item">
+          <img src="/public/img/two-piece.jpg" alt="two-piece" />
+          <figcaption>TWO PIECE SET</figcaption>
+        </div>
+
+        <div class="item">
+          <img src="/public/img/ankara.jpg" alt="ankara" />
+          <figcaption>ANKARA DRESSES</figcaption>
+        </div>
+
+        <div class="item">
+          <img src="/public/img/skirt.jpg" alt="skirt" />
+          <figcaption>SKIRT</figcaption>
+        </div>
+      </div>
+      <button id="shopsection-btn" class="text-white btn-bg">SHOP NOW</button>
+    </div>
+    <!--SHOPPING SECTION ENDS-->
+
+    <!--VISION SECTION BEGINS-->
+    <div class="visionSection text-center">
+      <div class="brandLogo">
+        <h2>BANDEX</h2>
+      </div>
+
+      <div class="visionStatement text-white">
+        <p>THE HOME OF WONDERFUL<br />CLOTHING</p>
+      </div>
+    </div>
+    <!--VISION SECTION ENDS-->
+
+    <footer>
+      <div class="socialIcons">
+        <div class="icon">
+          <a href=""
+            ><i class="fa fa-whatsapp fa-2x icon-green" aria-hidden="true"></i
+          ></a>
+        </div>
+
+        <div class="icon">
+          <a href=""
+            ><i class="fa fa-instagram fa-2x icon-ig" aria-hidden="true"></i
+          ></a>
+        </div>
+
+        <div class="icon">
+          <a href=""
+            ><i
+              class="fa fa-facebook-square fa-2x icon-fb"
+              aria-hidden="true"
+            ></i
+          ></a>
+        </div>
+      </div>
+
+      <p class="text-center text-white">
+        &copy 2024 bandex.com. All Rights Reserved
+      </p>
+    </footer>
+  </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
+
+  <script>
+    var sliderTrigger = document.getElementsByClassName("slider-trigger")[0];
+    var slider = document.getElementsByClassName("slider-parent")[0];
+    sliderTrigger.addEventListener("click", function (el) {
+      if (slider.classList.contains("active")) {
+        slider.classList.remove("active");
+      } else {
+        slider.classList.add("active");
+        sliderTrigger = "X";
+      }
+    });
+  </script>
+</html>

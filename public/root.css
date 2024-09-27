@@ -1,0 +1,249 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  /* background: #56365c; */
+  /* background: rgb(210, 205, 205); */
+  background: #fff;
+}
+
+/* body::-webkit-scrollbar {
+  width: 1rem;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px #fff;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #e9400a;
+} */
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 22px 0px 20px 0px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.text-white {
+  color: white;
+}
+.text-orange {
+  color: #e9400a;
+}
+.text-center {
+  text-align: center;
+}
+
+.btn-bg {
+  background-color: #e9400a;
+  border: none;
+}
+
+.bg-white {
+  background: white;
+}
+
+.bg-seashell {
+  background: #fff5ee;
+}
+
+.icon-orange {
+  color: #e9400a;
+}
+.icon-green {
+  color: green;
+}
+
+.icon-ig {
+  color: #d62976;
+}
+
+.icon-fb {
+  color: #1877f2;
+}
+
+.rmv-decor {
+  text-decoration: none;
+}
+
+.hover:hover {
+  background: #e9400a;
+  transition-delay: 0.2s;
+}
+.slider-container {
+  position: relative;
+}
+
+.slider-parent a {
+  line-height: 25px;
+}
+.slider-container .slider-parent {
+  height: 20vh;
+  max-width: 250px;
+  width: 100px;
+  padding: 30px;
+  background: #48304d;
+  position: absolute;
+  left: -250px;
+  top: 50px;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.2s all linear;
+}
+.slider-container .slider-parent.active {
+  visibility: visible;
+  pointer-events: inherit;
+  transition: 0.2s all ease-in-out;
+  opacity: 1;
+  left: 0;
+}
+
+.brandName,
+.shopButton {
+  text-align: center;
+}
+
+.shopButton {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.shopButton button {
+  padding: 5px;
+  width: 80px;
+  border-radius: 10px;
+}
+
+/*HERO SECTION IMAGES*/
+.heroSection {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.model1,
+.model2 {
+  width: 40%;
+}
+.model1 > img,
+.model2 > img {
+  width: 50%;
+  border-radius: 20%;
+}
+
+.model1 {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 50px;
+}
+
+.model2 {
+  margin-left: 20px;
+}
+
+/*SHOPPPING SECTION*/
+.shoppingSection {
+  margin-top: 30px;
+  padding: 0px 20px 20px 20px;
+}
+
+.shoppingSectionH2 h2 {
+  padding: 30px;
+}
+
+.shopList {
+  display: grid;
+  grid-template-columns: 0.5fr 0.5fr;
+  place-items: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.shopList img {
+  width: 300px;
+  height: 390px;
+  border-radius: 5px;
+}
+
+.item {
+  margin-bottom: 50px;
+}
+
+figcaption {
+  text-align: center;
+}
+
+#shopsection-btn {
+  display: block;
+  margin: 0px auto 0px auto;
+  padding: 10px;
+}
+/*SHOPPPING SECTION*/
+
+/*VISION SECTION*/
+.visionSection {
+  height: 20vh;
+  padding: 30px 30px 30px 30px;
+}
+.brandLogo {
+  background-color: #fff;
+  width: 230px;
+  display: block;
+  margin: 0px auto 0px auto;
+}
+/*VISION SECTION*/
+
+/*FOOTER SECTION*/
+footer {
+  height: 20vh;
+  /* background: #48304d; */
+  /* background: rgb(74, 70, 70); */
+}
+
+.socialIcons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  padding: 20px;
+}
+
+/*FOOTER SECTION*/
+
+@media (max-width: 767px) {
+  /* body {
+    background: green;
+  } */
+
+  .model1 > img,
+  .model2 > img {
+    width: 75%;
+    /* border-radius: 20%; */
+  }
+
+  .slider-container .slider-parent {
+    height: 10vh;
+    padding: 10px 0px 10px 30px;
+  }
+
+  .shopList img {
+    width: 160px;
+    height: 230px;
+    /* border-radius: 5px; */
+  }
+
+  .item {
+    margin-bottom: 30px;
+  }
+}
