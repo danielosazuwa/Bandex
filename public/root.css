@@ -267,10 +267,9 @@ footer {
 /*FOOTER SECTION*/
 
 @media (max-width: 767px) {
-  /* body {
-    background: green;
-  } */
-
+  body {
+    background-blend-mode:screen;
+  }
   .model1 > img,
   .model2 > img {
     width: 75%;

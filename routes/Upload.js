@@ -100,7 +100,7 @@ router.put(
       } else {
         // console.log(updatedUpload);
         // res.send("changes updated");
-        res.status(200).render("home", { update: "Changes updated" });
+        res.status(200).render("admin", { update: "Changes updated" });
       }
     } catch (error) {
       res.status(400).send(error);

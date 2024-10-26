@@ -35,7 +35,13 @@
     </div>
 
     <p class="text-center text-white">
-      &copy 2024 bandex.com. All Rights Reserved
+      <% function getYear(){%>
+        <%const now = new Date();%>
+        <% const year = now.getFullYear(); %>
+        <% return year %>
+      <%}%>
+      
+      &copy <%= getYear() %>  bandex.com. All Rights Reserved
     </p>
   </footer>
 </body>
