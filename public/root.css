@@ -4,9 +4,10 @@
   box-sizing: border-box;
 }
 body {
-  background-image: url(./img/codioful-formerly-gradienta-JYbxRcB9pvw-unsplash.jpg);
+  /* background-image: url(./img/codioful-formerly-gradienta-JYbxRcB9pvw-unsplash.jpg);
   background-size: cover;
-  background-position: center;
+  background-position: center; */
+  background: white;
   overflow-x: hidden;
 }
 
@@ -185,16 +186,17 @@ button {
   width: 80px;
   border-radius: 10px;
   display: block;
-  margin: 0 auto 0 auto;
+  margin: 0.3rem auto 0 auto;
 }
 
 figcaption {
   text-align: center;
+  margin-top: 0.3rem;
 }
 
 #shopsection-btn {
   display: block;
-  margin: 0px auto 0px auto;
+  margin: 0 auto 0px auto;
   padding: 10px;
 }
 
@@ -228,7 +230,7 @@ figcaption {
 }
 
 .adminPanelBtn {
-  background: white;
+  background: #54b4d3;
   color: black;
   text-align: center;
 }

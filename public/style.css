@@ -8,6 +8,10 @@
   color: #fff;
 }
 
+.text-black{
+  color: #000;
+}
+
 body {
   height: 100vh;
   /* background: #56365c; */
