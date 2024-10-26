@@ -1,6 +1,11 @@
 const express = require("express");
 const router = express.Router();
+const collection = require("../model/user");
+const _ = require("lodash");
+const bcrypt = require("bcrypt");
+const isAuthenticated = require("../routes/auth");
 
+//LOGIN ROUTE BEGINS
 router.get("/login", (req, res) => {
   res.render("login");
 });
@@ -20,7 +25,8 @@ router.post("/login", async (req, res) => {
       check.password
     );
     if (!isPasswordMatch) {
-      return res.redirect("/login");
+      // return res.redirect("/login");
+      return res.render("login", { error: "Invalid email or password" });
     }
     // Store user information in session
     req.session.user = {
@@ -28,16 +34,21 @@ router.post("/login", async (req, res) => {
       email: check.email,
     };
 
-    res.render("home", { email: check.email });
+    console.log(check.roles)
+
+    res.render("admin", { email: check.email, auth: req.session.user, rolePermission: check.roles });
   } catch {
-    res.render("login.ejs", { error: "Invalid email or password" });
+    res.render("login", { error: "Invalid email or password" });
   }
 });
 
 //logout
-router.get("/logout", (req, res) => {
-  req.session.destroy((error) => {
-    console.log("session destroyed");
+router.get("/logout", isAuthenticated, (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).send("Server Error");
+    }
   });
 
   res.clearCookie("userData");
@@ -45,4 +56,8 @@ router.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
+//admin panel
+router.get("/admin", isAuthenticated, (req, res) => {
+  res.render("admin");
+});
 module.exports = router;

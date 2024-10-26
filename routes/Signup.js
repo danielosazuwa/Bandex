@@ -1,12 +1,17 @@
 const express = require("express");
 const router = express.Router();
+const _ = require("lodash");
+const isAuthenticated = require("../routes/auth");
+const bcrypt = require("bcrypt");
+const collection = require("../model/user");
 
-router.get("/signup", (req, res) => {
+//SIGNUP ROUTE BEGINS
+router.get("/signup", isAuthenticated, (req, res) => {
   res.render("signup");
 });
 
 //Register user
-router.post("/signup", async (req, res) => {
+router.post("/signup", isAuthenticated, async (req, res) => {
   const data = {
     email: _.trim(req.body.email),
     password: _.trim(req.body.password),
@@ -20,7 +25,7 @@ router.post("/signup", async (req, res) => {
     });
   } else {
     //This ensures that the password is at least six characters
-    console.log(data.password.length);
+    // console.log(data.password.length);
     if (data.password.length < 6) {
       console.log("Password is less than 6 characters");
       res.render("signup", { error: "Password is less than 6 characters" });

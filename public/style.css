@@ -11,11 +11,12 @@
 body {
   height: 100vh;
   /* background: #56365c; */
-  background: linear-gradient(
+  /* background: linear-gradient(
     109.6deg,
     rgb(255, 230, 109) 11.2%,
     rgb(87, 232, 107) 100.2%
-  );
+  ); */
+  background-image: url(./img/codioful-formerly-gradienta-JYbxRcB9pvw-unsplash.jpg);
   display: flex;
   align-items: center;
   justify-content: center;

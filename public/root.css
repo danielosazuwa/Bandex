@@ -4,9 +4,9 @@
   box-sizing: border-box;
 }
 body {
-  /* background: #56365c; */
-  /* background: rgb(210, 205, 205); */
-  background: #fff;
+  background-image: url(./img/codioful-formerly-gradienta-JYbxRcB9pvw-unsplash.jpg);
+  background-size: cover;
+  background-position: center;
 }
 
 /* body::-webkit-scrollbar {
@@ -90,7 +90,7 @@ button {
   max-width: 250px;
   width: 100px;
   padding: 30px;
-  background: #48304d;
+  background: #e9400a;
   position: absolute;
   left: -250px;
   top: 50px;
@@ -154,6 +154,7 @@ button {
 .shoppingSection {
   margin-top: 30px;
   padding: 0px 20px 20px 20px;
+  /* background-image: url(./img/codioful-formerly-gradienta-JYbxRcB9pvw-unsplash.jpg); */
 }
 
 .shoppingSectionH2 h2 {
@@ -161,21 +162,29 @@ button {
 }
 
 .shopList {
-  display: grid;
-  grid-template-columns: 0.5fr 0.5fr;
-  place-items: center;
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
 
 .shopList img {
   width: 300px;
-  height: 390px;
+  height: 360px;
   border-radius: 5px;
 }
 
 .item {
+  margin: 20px 20px 20px 20px;
   margin-bottom: 50px;
+}
+
+.item button {
+  padding: 5px;
+  width: 80px;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto 0 auto;
 }
 
 figcaption {
@@ -187,6 +196,42 @@ figcaption {
   margin: 0px auto 0px auto;
   padding: 10px;
 }
+
+.edit-and-delete {
+  /* background: red; */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.editBtn,
+.deleteBtn,
+.adminPanelBtn {
+  padding: 5px;
+  width: 60px;
+  border-radius: 10px;
+}
+
+.editBtn {
+  background: #3b71ca;
+  color: white;
+  text-align: center;
+}
+
+.deleteBtn {
+  background: #dc4c64;
+  color: white;
+  text-align: center;
+}
+
+.adminPanelBtn {
+  background: white;
+  color: black;
+  text-align: center;
+}
+
 /*SHOPPPING SECTION*/
 
 /*VISION SECTION*/
@@ -237,6 +282,9 @@ footer {
     padding: 10px 0px 10px 30px;
   }
 
+  /* .shopList {
+    grid-template-columns: 0.5fr 0.5fr;
+  } */
   .shopList img {
     width: 160px;
     height: 230px;
@@ -245,5 +293,9 @@ footer {
 
   .item {
     margin-bottom: 30px;
+  }
+
+  .edit-and-delete {
+    justify-content: space-between;
   }
 }

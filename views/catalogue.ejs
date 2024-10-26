@@ -1,0 +1,68 @@
+<!--SHOPPING SECTION BEGINS-->
+<div class="shoppingSection">
+  <div class="shoppingSectionH2">
+    <h2 class="text-center text-orange">SHOP NEW ARRIVALS</h2>
+  </div>
+
+  <div class="shopList">
+    <% if(locals.uploads && uploads.length > 0){%> <% uploads.forEach(upload =>
+    {%>
+    <div class="item">
+      <img src="<%=upload.file%>" alt="<%= upload.brand %>" />
+      <figcaption class="text-white"><%= upload.brand%></figcaption>
+      <figcaption class="text-white">₦<%= upload.price %></figcaption>
+      <a class="rmv-decor" href="#"
+        ><button class="btn-bg text-white">Buy Now</button></a
+      >
+      <% if(auth){%>
+      <div class="edit-and-delete">
+        <a class="editBtn rmv-decor" href="/edit-upload?id=<%= upload._id %>"
+          >Edit</a
+        >
+        <a class="adminPanelBtn rmv-decor" href="/admin">Admin Panel</a>
+        <a
+          class="deleteBtn rmv-decor"
+          href="#"
+          onclick="deleteItem(event, '<%= upload._id %>')"
+          >Delete</a
+        >
+      </div>
+
+      <% } %>
+    </div>
+    <%}); %> <%}else{%>
+    <p>No items available</p>
+    <%} %>
+  </div>
+  <button id="shopsection-btn" class="text-white btn-bg">SHOP NOW</button>
+</div>
+<!--SHOPPING SECTION ENDS-->
+<script>
+  function deleteItem(event, id) {
+    event.preventDefault(); // Prevent default anchor click behavior
+
+    if (confirm("Are you sure you want to delete this item?")) {
+      fetch(`/delete-upload/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Requested-With": "XMLHttpRequest", // This header indicates an AJAX request
+        },
+      })
+        .then((response) => {
+          if (response.ok) {
+            // Successfully deleted
+            window.location.reload(); // Refresh the page
+          } else {
+            return response.text().then((text) => {
+              alert(`Failed to delete item: ${text}`);
+            });
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          alert("An error occurred while deleting the item.");
+        });
+    }
+  }
+</script>

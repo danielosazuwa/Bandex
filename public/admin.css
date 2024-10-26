@@ -1,0 +1,19 @@
+.admin-panel {
+  color: white;
+  text-align: center;
+}
+
+.admin-panel h1 {
+  margin-bottom: 1.5rem;
+}
+
+.adminBtns {
+  display: block;
+  margin-top: 1.5rem;
+}
+
+.adminBtns button {
+  padding: 5px;
+  width: 60px;
+  border-radius: 10px;
+}

@@ -1,0 +1,24 @@
+<%- include("partials/header") %>
+
+<div class="admin-panel container-fluid">
+  <h1>ADMIN PANEL</h1>
+  <h1 style="text-align: center">
+    Welcome <% if(locals.email){%> <%= email %>
+  </h1>
+  <%} %> <% if(locals.created){%>
+  <h2><%= created %> click <a href="/">home</a> to view</h2>
+  <%} %> <% if(locals.update){%>
+  <h2><%= update %> click <a href="/">home</a> to view</h2>
+  <%} %>
+
+  <div class="adminBtns">
+    <a href="/"><button>Home</button></a>
+    <a href="/logout"><button type="submit">Logout</button></a>
+    <a href="/upload"><button>Upload</button></a>
+    <% if(locals.rolePermission === 1){%>
+      <a href="/signup"><button>Signup</button></a>
+    <%} %>
+  </div>
+</div>
+
+<%- include("partials/footer") %>
