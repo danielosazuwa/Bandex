@@ -34,7 +34,7 @@ router.post("/login", async (req, res) => {
       email: check.email,
     };
 
-    console.log(check.roles)
+    // console.log(check.roles)
 
     res.render("admin", { email: check.email, auth: req.session.user, rolePermission: check.roles });
   } catch {
@@ -52,7 +52,7 @@ router.get("/logout", isAuthenticated, (req, res) => {
   });
 
   res.clearCookie("userData");
-  console.log("Cookies Cleared");
+  // console.log("Cookies Cleared");
   res.redirect("/");
 });
 

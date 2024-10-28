@@ -8,7 +8,7 @@
   color: #fff;
 }
 
-.text-black{
+.text-black {
   color: #000;
 }
 
@@ -24,11 +24,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow-x: hidden;
 }
 
-input{
+input {
   font-size: 13px;
 }
+
 .form-container {
   /* background: #48304d; */
   /* background: #e9400a; */
@@ -55,6 +57,7 @@ input{
 .form-group input {
   width: 100%;
   padding: 8px;
+  font-size: 13px;
 }
 
 input::placeholder {
@@ -105,4 +108,19 @@ p {
   max-height: 200px;
   display: block;
   margin: auto;
+}
+
+#priceArea {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#priceArea select {
+  margin-left: 1rem;
+  padding: 8px;
+}
+#priceArea input {
+  width: 8rem;
+  margin-left: 1.5rem;
 }

@@ -39,10 +39,11 @@ router.post(
       file: req.file.path,
       brand: _.trim(req.body.brand),
       price: _.trim(req.body.price),
+      currency: _.trim(req.body.currency),
     };
 
     const uploaded = await uploadCollection.insertMany(uploadedFiles);
-    console.log(uploaded);
+    // console.log(uploaded);
 
     res.render("admin", {
       created: "Content uploaded successfully",
@@ -82,6 +83,7 @@ router.put(
     const image = req.file ? req.file.path : null;
     const brand = req.body.brand;
     const price = req.body.price;
+    const currency = req.body.currency;
     try {
       const updatedUpload = await uploadCollection.findByIdAndUpdate(
         id,
@@ -89,6 +91,7 @@ router.put(
           file: image || undefined,
           brand: brand || undefined,
           price: price || undefined,
+          currency: currency || undefined,
         },
         { new: true }
       );

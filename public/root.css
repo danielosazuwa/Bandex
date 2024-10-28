@@ -271,12 +271,11 @@ footer {
 
 @media (max-width: 767px) {
   body {
-    background-blend-mode:screen;
+    background-blend-mode: screen;
   }
   .model1 > img,
   .model2 > img {
     width: 75%;
-    /* border-radius: 20%; */
   }
 
   .slider-container .slider-parent {
@@ -284,20 +283,24 @@ footer {
     padding: 10px 0px 10px 30px;
   }
 
-  /* .shopList {
-    grid-template-columns: 0.5fr 0.5fr;
-  } */
   .shopList img {
-    width: 160px;
-    height: 230px;
-    /* border-radius: 5px; */
+    width: 250px;
+    height: 280px;
+    display: block;
+    margin: 0 auto 0 auto;
   }
 
   .item {
     margin-bottom: 30px;
+    width: 70%;
   }
 
   .edit-and-delete {
-    justify-content: space-between;
+    justify-content: space-around;
   }
+
+  footer{
+    margin-top: -10px;
+  }
+
 }

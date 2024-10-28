@@ -50,10 +50,23 @@
           />
         </div>
 
-        <div class="form-group">
+        <div class="form-group" id="priceArea">
           <label for="price">Price</label>
+          <select id="currency" name="currency">
+            <option value="<%= data.currency %>"><%= data.currency %></option>
+            <% if(data.currency === "$"){%>
+            <option value="₦">₦</option>
+            <option value="null">--null--</option>
+            <%}else{%> <% if(data.currency === "₦"){%>
+            <option value="$">$</option>
+            <option value="null">--null--</option>
+            <%} %> <% if(data.currency === "null"){%>
+            <option value="₦">₦</option>
+            <option value="$">$</option>
+            <%} %> <% }%>
+          </select>
           <input
-            type="number"
+            type="text"
             name="price"
             value="<%= data.price %>"
             autocomplete="off"

@@ -3,14 +3,18 @@ const mongoose = require("mongoose");
 var uploadSchema = new mongoose.Schema({
   file: {
     type: String,
-    // required: true,
+    required: true,
   },
   brand: {
     type: String,
     required: true,
   },
   price: {
-    type: Number,
+    type: String,
+    required: true,
+  },
+  currency: {
+    type: String,
     required: true,
   },
   uploadDate: { type: Date, default: Date.now },
