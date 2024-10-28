@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 const collection = require("../model/user");
 
 //SIGNUP ROUTE BEGINS
-router.get("/signup", isAuthenticated, (req, res) => {
+router.get("/signup", isAuthenticated,(req, res) => {
   res.render("signup");
 });
 
@@ -27,7 +27,7 @@ router.post("/signup", isAuthenticated, async (req, res) => {
     //This ensures that the password is at least six characters
     // console.log(data.password.length);
     if (data.password.length < 6) {
-      console.log("Password is less than 6 characters");
+      // console.log("Password is less than 6 characters");
       res.render("signup", { error: "Password is less than 6 characters" });
     } else {
       //hash the password using bcrypt method

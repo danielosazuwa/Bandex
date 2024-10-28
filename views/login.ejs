@@ -12,7 +12,7 @@
       <form action="/login" method="post">
         <div class="form-group">
           <%if(locals.created){%>
-            <h4><%= created %></h4>
+            <h4 style="color: green;"><%= created %></h4>
           <%}  %>
 
           <% if(locals.error){%>
