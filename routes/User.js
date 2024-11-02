@@ -31,4 +31,24 @@ router.get("/", (req, res) => {
     });
   // res.render("root");
 });
+
+router.get("/upload/:Id", async (req, res) => {
+  if (req.params.Id) {
+    const id = req.params.Id;
+    uploadCollection
+      .findById(id)
+      .then((data) => {
+        if (!data) {
+          res.status(404).send({ message: "Post not found" });
+        } else {
+          res.render("full-catalogue", { catalogue: data });
+        }
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message: "Error occurred while retrieving post information",
+        });
+      });
+  }
+});
 module.exports = router;

@@ -1,0 +1,22 @@
+<%- include("partials/header") %>
+
+<div class="container-collection">
+  <pre><a class="rmv-decor" href="/">Home  >  </a><a class="rmv-decor" href="/upload/<%= catalogue._id %>"><%= catalogue.brand %></a></pre>
+
+  <div class="details-container">
+    <div class="brandpicture-container">
+      <img src="<%= catalogue.file %>" alt="<%= catalogue.brand %>" />
+    </div>
+
+    <div class="brand-container-details">
+      <h5>Official Store</h5>
+      <h2><%= catalogue.brand %></h2>
+      <p><%= catalogue.currency %> <%= catalogue.price %></p>
+
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- include("partials/footer") %>

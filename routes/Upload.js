@@ -10,18 +10,15 @@ const fs = require("fs");
 const multer = require("multer");
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "images");
+    cb(null, "public/images");
   },
   filename: (req, file, cb) => {
-    console.log(file);
     cb(null, Date.now() + path.extname(file.originalname));
   },
 });
 const upload = multer({
   storage: storage,
 });
-
-router.use("/images", express.static("images"));
 
 //UPLOAD ROUTE BEGINS
 router.get("/upload", isAuthenticated, (req, res) => {
@@ -36,12 +33,13 @@ router.post(
   async (req, res) => {
     // how to set parameters for image file MongoDB schema
     const uploadedFiles = {
-      file: req.file.path,
+      file: `/images/${req.file.filename}`,
       brand: _.trim(req.body.brand),
       price: _.trim(req.body.price),
       currency: _.trim(req.body.currency),
     };
 
+    // console.log(uploadedFiles.file);
     const uploaded = await uploadCollection.insertMany(uploadedFiles);
     // console.log(uploaded);
 
@@ -80,7 +78,7 @@ router.put(
   upload.single("myFile"),
   async (req, res) => {
     const id = req.params.id;
-    const image = req.file ? req.file.path : null;
+    const image = req.file ? `/images/${req.file.filename}` : null;
     const brand = req.body.brand;
     const price = req.body.price;
     const currency = req.body.currency;
@@ -122,8 +120,8 @@ router.delete("/delete-upload/:id", isAuthenticated, async (req, res) => {
         });
       } else {
         const fileName = data.file;
-        const filePath = path.join(fileName);
-
+        const filePath = "public" + path.join(fileName);
+        // console.log(filePath);
         //This deletes the image file from the images folder
         fs.unlink(filePath, (err) => {
           if (err) {

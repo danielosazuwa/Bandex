@@ -1,0 +1,49 @@
+.container-collection {
+  width: 75%;
+  display: block;
+  margin: 0 auto 0 auto;
+}
+
+.container-collection a {
+  color: white;
+}
+
+.container-collection pre {
+  margin-bottom: 10px;
+  background: #e9400a;
+  padding: 10px;
+  border-radius: 10px 2px;
+  width: fit-content;
+}
+
+.details-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.brandpicture-container {
+  margin-right: 40px;
+}
+.brandpicture-container img {
+  width: 500px;
+  height: 450px;
+}
+
+.brand-container-details {
+  width: 50%;
+  /* background: grey; */
+}
+
+.brand-container-details h5 {
+  background: rgb(8, 71, 81);
+  color: white;
+  width: fit-content;
+  padding: 10px;
+}
+
+@media (max-width: 767px) {
+  .details-container {
+    flex-wrap: wrap;
+  }
+}
