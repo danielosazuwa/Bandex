@@ -9,6 +9,7 @@
     {%>
     <div class="item">
       <a href="/upload/<%=upload._id%>">
+        <%console.log(upload.file)%>
         <img src="<%=upload.file%>" alt="<%= upload.brand %>" />
       </a>
       <figcaption class="text-black"><%= upload.brand%></figcaption>

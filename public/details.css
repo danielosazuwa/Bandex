@@ -2,6 +2,7 @@
   width: 75%;
   display: block;
   margin: 0 auto 0 auto;
+  overflow-x: hidden;
 }
 
 .container-collection a {

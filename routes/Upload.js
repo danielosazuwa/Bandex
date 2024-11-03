@@ -18,6 +18,14 @@ const storage = multer.diskStorage({
 });
 const upload = multer({
   storage: storage,
+  fileFilter: (req, file, cb) => {
+    const filetypes = /jpeg|jpg|png|gif/; // Include both jpg and jpeg
+    const mimetype = filetypes.test(file.mimetype);
+    if (mimetype) {
+      return cb(null, true);
+    }
+    cb('Error: File type not supported!');
+  }
 });
 
 //UPLOAD ROUTE BEGINS

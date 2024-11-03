@@ -5,6 +5,7 @@ const cookies = require("cookie-parser");
 const { v4: uuidv4 } = require("uuid");
 const methodOverride = require("method-override");
 const connection = require("./database/connection");
+const path = require("path");
 
 dotenv.config({ path: "config.env" });
 
@@ -26,7 +27,7 @@ app.set("view engine", "ejs");
 
 //static file
 app.use(express.static("public"));
-app.use("/images", express.static("images"));
+app.use('/images', express.static(path.join(__dirname, 'public/images')));
 app.use(methodOverride("_method"));
 // Initialization
 app.use(cookies());
