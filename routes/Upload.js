@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
   },
 });
 
-router.use("/images", express.static(path.join(__dirname, "public/images")));
+// router.use("/images", express.static(path.join(__dirname, "public/images")));
 
 const upload = multer({
   storage: storage,

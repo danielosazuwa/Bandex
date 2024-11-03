@@ -6,7 +6,7 @@ const uploadCollection = require("../model/upload");
 const _ = require("lodash");
 const fs = require("fs");
 
-router.use("/images", express.static(path.join(__dirname, "/images")));
+// router.use("/images", express.static(path.join(__dirname, "/images")));
 
 router.delete("/delete-upload/:id", isAuthenticated, async (req, res) => {
   const id = req.params.id;
