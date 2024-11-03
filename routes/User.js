@@ -11,6 +11,8 @@ const path = require("path");
 //TODO Implement the add to cart functionality
 // router.use("/images", express.static(path.join(__dirname, "public/images")));
 
+router.use("/images", express.static("images"));
+
 router.get("/", (req, res) => {
   // var requrl = url.format({
   //   protocol: req.protocol,

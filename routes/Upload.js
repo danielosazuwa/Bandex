@@ -10,7 +10,7 @@ const fs = require("fs");
 const multer = require("multer");
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "public/images");
+    cb(null, "images");
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + path.extname(file.originalname));
@@ -23,7 +23,7 @@ const upload = multer({
   storage: storage,
 });
 
-router.use("/images", express.static(path.join(__dirname, "/images")));
+router.use("/images", express.static("images"));
 
 //UPLOAD ROUTE BEGINS
 router.get("/upload", isAuthenticated, (req, res) => {
@@ -38,7 +38,7 @@ router.post(
   async (req, res) => {
     // how to set parameters for image file MongoDB schema
     const uploadedFiles = {
-      file: `/images/${req.file.filename}`,
+      file: req.file.path,
       brand: _.trim(req.body.brand),
       price: _.trim(req.body.price),
       currency: _.trim(req.body.currency),
@@ -83,7 +83,7 @@ router.put(
   upload.single("myFile"),
   async (req, res) => {
     const id = req.params.id;
-    const image = req.file ? `/images/${req.file.filename}` : null;
+    const image = req.file ? req.file.path : null;
     const brand = req.body.brand;
     const price = req.body.price;
     const currency = req.body.currency;

@@ -19,7 +19,7 @@ router.delete("/delete-upload/:id", isAuthenticated, async (req, res) => {
         });
       } else {
         const fileName = data.file;
-        const filePath = `public${path.join(fileName)}`;
+        const filePath = path.join(fileName);
         // console.log(filePath);
         //This deletes the image file from the images folder
         fs.unlink(filePath, (err) => {
