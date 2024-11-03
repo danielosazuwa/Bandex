@@ -16,6 +16,9 @@ const storage = multer.diskStorage({
     cb(null, Date.now() + path.extname(file.originalname));
   },
 });
+
+router.use("/images", express.static(path.join(__dirname, "public/images")));
+
 const upload = multer({
   storage: storage,
   fileFilter: (req, file, cb) => {
@@ -130,7 +133,7 @@ router.put(
 //         });
 //       } else {
 //         const fileName = data.file;
-//         const filePath = path.join(fileName);
+//         const filePath = "public" + path.join(fileName);
 //         // console.log(filePath);
 //         //This deletes the image file from the images folder
 //         fs.unlink(filePath, (err) => {
