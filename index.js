@@ -27,7 +27,7 @@ app.set("view engine", "ejs");
 
 //static file
 app.use(express.static("public"));
-app.use("/images", express.static("/images"));
+app.use("/images", express.static("images"));
 app.use(methodOverride("_method"));
 // Initialization
 app.use(cookies());
