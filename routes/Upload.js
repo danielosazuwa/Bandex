@@ -21,14 +21,6 @@ router.use("/images", express.static(path.join(__dirname, "public/images")));
 
 const upload = multer({
   storage: storage,
-  fileFilter: (req, file, cb) => {
-    const filetypes = /jpeg|jpg|png|gif/; // Include both jpg and jpeg
-    const mimetype = filetypes.test(file.mimetype);
-    if (mimetype) {
-      return cb(null, true);
-    }
-    cb("Error: File type not supported!");
-  },
 });
 
 router.use("/images", express.static(path.join(__dirname, "/images")));
