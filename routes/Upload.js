@@ -24,9 +24,11 @@ const upload = multer({
     if (mimetype) {
       return cb(null, true);
     }
-    cb('Error: File type not supported!');
-  }
+    cb("Error: File type not supported!");
+  },
 });
+
+router.use("/images", express.static(path.join(__dirname, "/images")));
 
 //UPLOAD ROUTE BEGINS
 router.get("/upload", isAuthenticated, (req, res) => {
@@ -117,36 +119,36 @@ router.put(
   }
 );
 
-router.delete("/delete-upload/:id", isAuthenticated, async (req, res) => {
-  const id = req.params.id;
-  uploadCollection
-    .findByIdAndDelete(id)
-    .then((data) => {
-      if (!data) {
-        res.status(404).send({
-          message: `Cannot delete with ${id}, mayabe id is wrong`,
-        });
-      } else {
-        const fileName = data.file;
-        const filePath = "bandex.onrender.com"+"public" + path.join(fileName);
-        // console.log(filePath);
-        //This deletes the image file from the images folder
-        fs.unlink(filePath, (err) => {
-          if (err) {
-            console.error("Error deleting file:", err);
-            return res.status(500).send("File deletion failed.");
-          }
-        });
-        res.send({
-          message: "User was deleted successfully",
-        });
-      }
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: `Could not delete user with id= ${id}`,
-      });
-    });
-});
+// router.delete("/delete-upload/:id", isAuthenticated, async (req, res) => {
+//   const id = req.params.id;
+//   uploadCollection
+//     .findByIdAndDelete(id)
+//     .then((data) => {
+//       if (!data) {
+//         res.status(404).send({
+//           message: `Cannot delete with ${id}, mayabe id is wrong`,
+//         });
+//       } else {
+//         const fileName = data.file;
+//         const filePath = path.join(fileName);
+//         // console.log(filePath);
+//         //This deletes the image file from the images folder
+//         fs.unlink(filePath, (err) => {
+//           if (err) {
+//             console.error("Error deleting file:", err);
+//             return res.status(500).send("File deletion failed.");
+//           }
+//         });
+//         res.send({
+//           message: "User was deleted successfully",
+//         });
+//       }
+//     })
+//     .catch((err) => {
+//       res.status(500).send({
+//         message: `Could not delete user with id= ${id}`,
+//       });
+//     });
+// });
 
 module.exports = router;

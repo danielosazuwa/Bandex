@@ -27,7 +27,7 @@ app.set("view engine", "ejs");
 
 //static file
 app.use(express.static("public"));
-app.use('/images', express.static(path.join(__dirname, 'public/images')));
+app.use("/images", express.static(path.join(__dirname, "/images")));
 app.use(methodOverride("_method"));
 // Initialization
 app.use(cookies());
@@ -45,10 +45,12 @@ const userRoutes = require("./routes/User"); //root route
 const loginRoutes = require("./routes/Login"); //login route
 const signupRoutes = require("./routes/Signup"); //signup route
 const uploadRoutes = require("./routes/Upload");
+const DeleteRoutes = require("./routes/Delete-item");
 
 //use routes
 app.use(userRoutes); //root route
 app.use(loginRoutes); //login route
 app.use(signupRoutes); //signup route
 app.use(uploadRoutes); //upload route
+app.use(DeleteRoutes); //upload route
 app.listen(port, () => console.log(`server is running at port ${port}`));
