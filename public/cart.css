@@ -37,9 +37,11 @@ a#go-back-to-products {
   align-items: center;
   gap: 10px;
   color: black;
+  margin-top: 15px;
 }
 
 a#go-back-to-products button {
   border-radius: 50%;
   padding: 5px;
+  border: 2px solid black;
 }

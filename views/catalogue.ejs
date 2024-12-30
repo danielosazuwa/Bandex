@@ -12,7 +12,7 @@
         <img src="<%=upload.file%>" alt="<%= upload.brand %>" />
       </a>
       <figcaption class="text-black"><%= upload.brand%></figcaption>
-      <figcaption class="text-black">
+      <figcaption class="text-black" style="font-weight: bold">
         <%if (upload.currency === "null") {%> <%= upload.price %> <%}else{%>
         <%=upload.currency%><%= upload.price %> <%}%>
       </figcaption>
