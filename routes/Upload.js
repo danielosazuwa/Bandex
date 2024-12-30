@@ -30,29 +30,66 @@ router.get("/upload", isAuthenticated, (req, res) => {
   res.render("upload");
 });
 
-//save uploaded files to mongodb database
 router.post(
   "/upload",
   isAuthenticated,
   upload.single("myFile"),
   async (req, res) => {
-    // how to set parameters for image file MongoDB schema
-    const uploadedFiles = {
-      file: req.file.path,
-      brand: _.trim(req.body.brand),
-      price: _.trim(req.body.price),
-      currency: _.trim(req.body.currency),
-    };
+    try {
+      // Make sure file is present
+      if (!req.file) {
+        return res.status(400).send("No file uploaded.");
+      }
 
-    // console.log(uploadedFiles.file);
-    const uploaded = await uploadCollection.insertMany(uploadedFiles);
-    // console.log(uploaded);
+      // Set parameters for the MongoDB schema
+      const uploadedFiles = {
+        file: req.file.path,
+        brand: _.trim(req.body.brand),
+        price: _.trim(req.body.price),
+        currency: _.trim(req.body.currency),
+      };
 
-    res.render("admin", {
-      created: "Content uploaded successfully",
-    });
+      // Insert the file data into the MongoDB collection
+      const uploaded = await uploadCollection.insertMany([uploadedFiles]);
+
+      // Respond with success message if everything goes smoothly
+      res.render("admin", {
+        created: "Content uploaded successfully",
+        auth:req.session.user,
+    rolePermission: req.session.user.roles,
+    email: req.session.user.email,
+
+      });
+    } catch (error) {
+      // If there's an error (file upload or database), handle it here
+      console.error("Error during upload:", error);
+      res.status(500).send("Something went wrong while uploading.");
+    }
   }
 );
+// //save uploaded files to mongodb database
+// router.post(
+//   "/upload",
+//   isAuthenticated,
+//   upload.single("myFile"),
+//   async (req, res) => {
+//     // how to set parameters for image file MongoDB schema
+//     const uploadedFiles = {
+//       file: req.file.path,
+//       brand: _.trim(req.body.brand),
+//       price: _.trim(req.body.price),
+//       currency: _.trim(req.body.currency),
+//     };
+
+//     // console.log(uploadedFiles.file);
+//     const uploaded = await uploadCollection.insertMany(uploadedFiles);
+//     // console.log(uploaded);
+
+//     res.render("admin", {
+//       created: "Content uploaded successfully",
+//     });
+//   }
+// );
 //UPLOAD ROUTE ENDS
 
 //RETRIEVE THE DETAILS OF A PARTICULAR POST
@@ -106,7 +143,14 @@ router.put(
       } else {
         // console.log(updatedUpload);
         // res.send("changes updated");
-        res.status(200).render("admin", { update: "Changes updated" });
+        res
+          .status(200)
+          .render("admin", {
+            update: "Changes updated",
+            email: req.session.user.email,
+            rolePermission: req.session.user.roles,
+            auth:req.session.user,
+          });
       }
     } catch (error) {
       res.status(400).send(error);

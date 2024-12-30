@@ -36,7 +36,7 @@ router.get("/", (req, res) => {
   // res.render("root");
 });
 
-router.get("/upload/:Id", async (req, res) => {
+router.get("/shop/:Id", async (req, res) => {
   if (req.params.Id) {
     const id = req.params.Id;
     uploadCollection
@@ -45,7 +45,10 @@ router.get("/upload/:Id", async (req, res) => {
         if (!data) {
           res.status(404).send({ message: "Post not found" });
         } else {
-          res.render("full-catalogue", { catalogue: data });
+          res.render("full-catalogue", {
+            catalogue: data,
+            auth: req.session.user,
+          });
         }
       })
       .catch((err) => {

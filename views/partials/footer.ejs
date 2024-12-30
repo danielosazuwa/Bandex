@@ -28,7 +28,7 @@
       </div>
     </div>
 
-    <p class="text-center text-white">
+    <p class="text-center text-black">
       <% function getYear(){%>
         <%const now = new Date();%>
         <% const year = now.getFullYear(); %>
@@ -55,29 +55,39 @@ window.addEventListener("load", () => {
   });
 });
 </script>
-<!-- <script>
-  var sliderTrigger = document.getElementsByClassName("slider-trigger")[0];
-  var slider = document.getElementsByClassName("slider-parent")[0];
-  sliderTrigger.addEventListener("click", function (el) {
-    if (slider.classList.contains("active")) {
-      slider.classList.remove("active");
-    } else {
-      slider.classList.add("active");
-      sliderTrigger = "X";
+<script>
+  function toggleNav() {
+      const navList = document.getElementById('nav-list');
+      const button = document.querySelector('.toggle-button');
+      
+      // Toggle the nav list visibility
+      navList.style.display = (navList.style.display === 'block') ? 'none' : 'block';
+      
+      // Change the button to an "X" or back to the hamburger menu
+      if (button.innerHTML === '☰') {
+        button.innerHTML = '×'; // Change to "X"
+      } else {
+        button.innerHTML = '☰'; // Change back to hamburger
+      }
     }
-  });
-</script> -->
+  
+  </script>
+  <script>
+    document.querySelector('.increase').addEventListener('click', function() {
+  const input = document.querySelector('.quantity-input');
+  let currentValue = parseInt(input.value);
+  input.value = currentValue + 1;
+});
 
-<!-- <script>
-  function destroySession() {
-    req.session.destroy((err) => {
-    if (err) {
-      console.log(err);
-      return res.status(500).send("Server Error");
-    }
-    res.clearCookie("userData");
-    console.log("Cookies Cleared");
-  });
-} -->
-</script>
+document.querySelector('.decrease').addEventListener('click', function() {
+  const input = document.querySelector('.quantity-input');
+  let currentValue = parseInt(input.value);
+  if (currentValue > 1) {
+    input.value = currentValue - 1;
+  }
+});
+  </script>
+<script src="/js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
 </html>

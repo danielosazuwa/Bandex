@@ -7,7 +7,7 @@ body {
   /* background-image: url(./img/codioful-formerly-gradienta-JYbxRcB9pvw-unsplash.jpg);
   background-size: cover;
   background-position: center; */
-  background: white;
+  background: ghostwhite;
   overflow-x: hidden;
 }
 
@@ -22,13 +22,6 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
   background-color: #e9400a;
 } */
-
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  padding: 22px 0px 20px 0px;
-}
 
 button {
   cursor: pointer;
@@ -46,6 +39,11 @@ button {
 
 .btn-bg {
   background-color: #e9400a;
+  border: none;
+}
+
+.btn-cart {
+  background: #3b71ca;
   border: none;
 }
 
@@ -80,49 +78,153 @@ button {
   background: #e9400a;
   transition-delay: 0.2s;
 }
-.slider-container {
+
+header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px 0px;
+  flex-wrap: wrap;
+}
+
+#logo {
+  font-size: 2rem;
+}
+
+.mockup-nav ul {
+  list-style: none;
+  text-align: center;
+  display: flex;
+}
+.mockup-nav ul li {
+  display: inline-block;
   position: relative;
 }
-
-.slider-parent a {
-  line-height: 25px;
+.mockup-nav ul li a {
+  display: block;
+  padding: 20px 25px;
+  color: black;
+  text-decoration: none;
+  text-align: left;
+  font-size: 16px;
+  transition: background-color 0.5s ease-in-out;
+  margin-right: 0.2rem;
 }
-.slider-container .slider-parent {
-  height: 20vh;
-  max-width: 250px;
-  width: 100px;
-  padding: 30px;
-  background: #e9400a;
+.mockup-nav ul li ul.dropdown li {
+  display: block;
+  background: white;
+}
+.mockup-nav ul li ul.dropdown {
+  width: 15rem;
   position: absolute;
-  left: -250px;
-  top: 50px;
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-  transition: 0.2s all linear;
-}
-.slider-container .slider-parent.active {
-  visibility: visible;
-  pointer-events: inherit;
-  transition: 0.2s all ease-in-out;
-  opacity: 1;
-  left: 0;
+  z-index: 999;
+  display: none;
 }
 
-.brandName,
-.shopButton {
+.mockup-nav ul li ul.dropdown a {
+  padding: 10px 10px;
+  transition: width 1s;
+}
+
+.mockup-nav ul li ul.dropdown a:hover {
+  border-radius: 10px;
+}
+
+.mockup-nav ul li a:hover {
+  text-decoration: underline;
+  border-radius: 10px;
+}
+
+ul.dropdown li a:hover {
+  background: #1f2537;
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+}
+.mockup-nav ul li:hover ul.dropdown {
+  display: block;
+}
+
+a.shop-now-nav-btn {
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 12px;
+  width: 10%;
+  height: 10%;
+  font-size: 14px;
   text-align: center;
+  text-decoration: none;
 }
 
-.shopButton {
+.phone-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px 4px;
+}
+
+.phone-nav div:nth-child(1) {
+  width: 10%;
+}
+.phone-nav div:nth-child(2) {
+  /* background: tomato; */
+  /* padding: 20px 0px; */
+  width: 20%;
+}
+.phone-nav div:nth-child(3) {
+  width: 20%;
   display: flex;
   justify-content: flex-end;
+  /* background:red */
+}
+.phone-nav button {
+  background: #fff;
+  color: #e9400a;
+  border: none;
+  font-size: 30px;
+  width: 40px;
+  height: 30px;
 }
 
-.shopButton button {
-  padding: 5px;
-  width: 80px;
-  border-radius: 10px;
+.dropdown-content {
+  display: none; /* Hidden by default */
+  /* border: 1px solid #ccc; */
+  padding: 0 10px 0 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  /* background-color: #e9e8dc; */
+  position: relative;
+  text-align: justify;
+  /* line-height: 2rem; */
+}
+
+.nav-list {
+  display: none; /* Initially hidden */
+  list-style-type: none;
+  padding: 0px 20px;
+  /* padding: 0; */
+  /* margin: 0; */
+  width: 100%;
+}
+
+.nav-list ul {
+  /* padding: 10px; */
+  margin: 0;
+  list-style-type: none;
+}
+
+.nav-list ul li {
+  margin: 10px 0px;
+  display: block;
+  border: 2px solid #e9400a;
+  padding: 10px;
+}
+
+.nav-list ul li > a {
+  color: #000;
+  text-decoration: none;
+  width: 100%;
 }
 
 /*HERO SECTION IMAGES*/
@@ -156,7 +258,6 @@ button {
 .shoppingSection {
   margin-top: 30px;
   padding: 0px 20px 20px 20px;
-  /* background-image: url(./img/codioful-formerly-gradienta-JYbxRcB9pvw-unsplash.jpg); */
 }
 
 .shoppingSectionH2 h2 {
@@ -269,21 +370,22 @@ footer {
 
 /*FOOTER SECTION*/
 
-@media (max-width: 767px) {
+@media (max-width: 10000px) {
+  .phone-nav {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
   body {
     background-blend-mode: screen;
   }
   .model1 > img,
   .model2 > img {
-    width: 75%;
+    width: 80%;
   }
 
-  .slider-container .slider-parent {
-    height: 10vh;
-    padding: 10px 0px 10px 30px;
-  }
-
-  .shopList img {
+  /* .shopList img {
     width: 250px;
     height: 320px;
   }
@@ -291,14 +393,23 @@ footer {
   .item {
     margin-bottom: 30px;
     width: 70%;
-  }
+  } */
 
   .edit-and-delete {
     justify-content: space-around;
   }
 
-  footer{
+  footer {
     margin-top: -10px;
   }
+}
 
+@media (max-width: 480px) {
+  header {
+    display: none;
+  }
+
+  .phone-nav {
+    display: flex;
+  }
 }

@@ -1,22 +1,57 @@
 <%- include("partials/header") %>
 
-<div class="container-collection">
-  <pre><a class="rmv-decor" href="/">Home  >  </a><a class="rmv-decor" href="/upload/<%= catalogue._id %>"><%= catalogue.brand %></a></pre>
+<div class="full-catalogue">
+  <pre
+    id="full-catalogue-nav"
+  ><a class="rmv-decor" href="/">Home  >  </a><a class="rmv-decor" href="/shop/<%= catalogue._id %>"><%= catalogue.brand %></a></pre>
 
-  <div class="details-container">
-    <div class="brandpicture-container">
-      <img src="/<%= catalogue.file %>" alt="<%= catalogue.brand %>" />
-    </div>
+  <div class="container-collection">
+    <div class="details-container">
+      <div class="brandpicture-container">
+        <img src="/<%= catalogue.file %>" alt="<%= catalogue.brand %>" />
+      </div>
 
-    <div class="brand-container-details">
-      <h5>Official Store</h5>
-      <h2><%= catalogue.brand %></h2>
-      <p><%= catalogue.currency %> <%= catalogue.price %></p>
+      <div class="brand-container-details">
+        <h5>Official Store</h5>
+        <p><%= catalogue.brand %></p>
+        <h4><%= catalogue.currency %> <%= catalogue.price %></h4>
 
 
-      </form>
+
+        <form action="/add-to-cart" method="POST">
+          <input type="hidden" name="productId" value="<%= catalogue._id %>">
+          <div class="size-selector">
+            <!-- <input type="radio" name="size" value="xs" id="size-xs" />
+            <label for="size-xs" class="size-option">XS</label> -->
+  
+            <input type="radio" name="size" value="S" id="size-s" />
+            <label for="size-s" class="size-option">S</label>
+  
+            <input type="radio" name="size" value="M" id="size-m" />
+            <label for="size-m" class="size-option">M</label>
+  
+            <input type="radio" name="size" value="L" id="size-l" />
+            <label for="size-l" class="size-option">L</label>
+  
+            <input type="radio" name="size" value="XL" id="size-xl" />
+            <label for="size-xl" class="size-option">XL</label>
+  
+            <input type="radio" name="size" value="XXL" id="size-xxl" />
+            <label for="size-xxl" class="size-option">XXL</label>
+          </div>
+  
+          <div class="quantity">
+            <button type="button" class="decrease">-</button>
+            <input type="number" name="quantity" class="quantity-input" value="1" min="1" />
+            <button type="button" class="increase">+</button>
+          </div>
+          <button id="full-catalogue-cart" type="submit">         <i class="fa-solid fa-cart-shopping fa-flip-horizontal" style="color: white"></i>
+            <p>Add to Cart</p></button>
+        </form>
+      </div>
     </div>
   </div>
 </div>
+
 
 <%- include("partials/footer") %>

@@ -26,17 +26,22 @@ router.post("/login", async (req, res) => {
     );
     if (!isPasswordMatch) {
       // return res.redirect("/login");
-      return res.render("login", { error: "Invalid email or password" });
+      return res.render("login", { error: "Invalid login credentials" });
     }
     // Store user information in session
     req.session.user = {
       id: check._id,
       email: check.email,
+      roles: check.roles,
     };
 
     // console.log(check.roles)
 
-    res.render("admin", { email: check.email, auth: req.session.user, rolePermission: check.roles });
+    res.render("admin", {
+      email: check.email,
+      auth: req.session.user,
+      rolePermission: check.roles,
+    });
   } catch {
     res.render("login", { error: "Invalid email or password" });
   }
@@ -57,7 +62,12 @@ router.get("/logout", isAuthenticated, (req, res) => {
 });
 
 //admin panel
-router.get("/admin", isAuthenticated, (req, res) => {
-  res.render("admin");
+router.get("/admin", isAuthenticated, async (req, res) => {
+  // At this point, req.session.user exists, so the user is authenticated
+  res.render("admin", {
+    email: req.session.user.email,
+    rolePermission: req.session.user.roles,
+    auth: req.session.user,
+  });
 });
 module.exports = router;

@@ -37,6 +37,7 @@ app.use(
     secret: uuidv4(),
     resave: false,
     saveUninitialized: true,
+    cookie: { secure: false, maxAge: 1000 * 60 * 60 * 24 },
   })
 );
 
@@ -46,6 +47,7 @@ const loginRoutes = require("./routes/Login"); //login route
 const signupRoutes = require("./routes/Signup"); //signup route
 const uploadRoutes = require("./routes/Upload");
 const DeleteRoutes = require("./routes/Delete-item");
+const CartRoutes = require("./routes/Cart"); //cart route
 
 //use routes
 app.use(userRoutes); //root route
@@ -53,4 +55,6 @@ app.use(loginRoutes); //login route
 app.use(signupRoutes); //signup route
 app.use(uploadRoutes); //upload route
 app.use(DeleteRoutes); //upload route
+app.use(CartRoutes); //upload route
+
 app.listen(port, () => console.log(`server is running at port ${port}`));

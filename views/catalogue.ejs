@@ -1,14 +1,14 @@
 <!--SHOPPING SECTION BEGINS-->
 <div class="shoppingSection">
   <div class="shoppingSectionH2">
-    <h2 class="text-center text-orange">SHOP NEW ARRIVALS</h2>
+    <h2 class="text-center text-orange">Shop New Arrivals</h2>
   </div>
 
   <div class="shopList">
     <% if(locals.uploads && uploads.length > 0){%> <% uploads.forEach(upload =>
     {%>
     <div class="item">
-      <a href="/upload/<%=upload._id%>">
+      <a href="/shop/<%=upload._id%>">
         <img src="<%=upload.file%>" alt="<%= upload.brand %>" />
       </a>
       <figcaption class="text-black"><%= upload.brand%></figcaption>
@@ -16,9 +16,18 @@
         <%if (upload.currency === "null") {%> <%= upload.price %> <%}else{%>
         <%=upload.currency%><%= upload.price %> <%}%>
       </figcaption>
-      <a class="rmv-decor" href="#"
-        ><button class="btn-bg text-white">Buy Now</button></a
-      >
+
+      <form action="/add-to-cart" method="POST">
+        <input type="hidden" name="productId" value="<%= upload._id %>" />
+        <button
+          id="full-catalogue-cart"
+          type="submit"
+          onclick="addToCart(event, '<%= upload._id %>')"
+        >
+          <i class="fa-solid fa-cart-shopping fa-flip-horizontal"></i>
+          <p>Add to Cart</p>
+        </button>
+      </form>
       <% if(auth){%>
       <div class="edit-and-delete">
         <a class="editBtn rmv-decor" href="/edit-upload?id=<%= upload._id %>"
@@ -69,5 +78,45 @@
           alert("An error occurred while deleting the item.");
         });
     }
+  }
+</script>
+
+<script>
+  function addToCart(event, productId) {
+    event.preventDefault(); // Prevent default anchor click behavior
+
+    // const quantity = document.getElementById(`quantity-${productId}`).value; // Get the quantity input value
+
+    // Validate the quantity (ensure it's a valid number)
+    // if (isNaN(quantity) || quantity <= 0) {
+    //   alert('Please enter a valid quantity');
+    //   return;
+    // }
+
+    fetch(`/add-to-cart`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Requested-With": "XMLHttpRequest", // This header indicates an AJAX request
+      },
+      body: JSON.stringify({
+        productId: productId,
+      }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          // Successfully added to cart
+          // window.location.reload(); // Refresh the page
+          alert("Item has successfully been added to cart");
+        } else {
+          return response.text().then((text) => {
+            alert(`Failed to add item to cart: ${text}`);
+          });
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("An error occurred while adding item to cart.");
+      });
   }
 </script>

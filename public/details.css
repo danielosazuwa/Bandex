@@ -1,39 +1,65 @@
-.container-collection {
-  width: 75%;
+.full-catalogue {
+  /* width: 100%; */
+  /* padding: 0px 130px 20px 130px; */
+  /* background: green; */
+}
+
+pre#full-catalogue-nav {
+  width: 78%;
   display: block;
-  margin: 0 auto 0 auto;
-  overflow-x: hidden;
+  margin: 0px auto;
+  /* margin-left: 50px; */
+  margin-bottom: 10px;
+  background: #e9400a;
+  padding: 10px;
+  border-radius: 10px 2px;
+  /* width: fit-content; */
+}
+
+pre#full-catalogue-nav a {
+  color: white;
+}
+
+.container-collection {
+  background: white;
+  width: 78%;
+  display: block;
+  margin: 20px auto;
+
+  /* padding: 30px 30px; */
 }
 
 .container-collection a {
   color: white;
 }
 
-.container-collection pre {
-  margin-bottom: 10px;
-  background: #e9400a;
-  padding: 10px;
-  border-radius: 10px 2px;
-  width: fit-content;
-}
-
 .details-container {
-  width: 100%;
+  /* background: pink; */
   display: flex;
-  justify-content: center;
+  gap: 20px;
+  /* justify-content: center; */
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .brandpicture-container {
-  margin-right: 40px;
+  width: 50%;
 }
 .brandpicture-container img {
-  width: 500px;
-  height: 450px;
+  width: 100%;
+  height: 400px;
 }
 
 .brand-container-details {
-  width: 50%;
+  display: block;
+  /* margin-l eft: auto; */
+  width: 40%;
   /* background: grey; */
+}
+
+.brand-container-details > * {
+  /* background: yellow; */
+  margin-bottom: 10px;
 }
 
 .brand-container-details h5 {
@@ -43,8 +69,141 @@
   padding: 10px;
 }
 
-@media (max-width: 767px) {
+.brand-container-details > form > * {
+  /* background: yellow; */
+  margin-bottom: 10px;
+}
+
+.size-selector {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: fit-content;
+}
+
+.size-option {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  transition: background-color 0.3s ease;
+}
+
+/* Hide the radio buttons */
+.size-selector input[type="radio"] {
+  display: none;
+}
+
+/* When the radio button is checked, style the associated label */
+.size-selector input[type="radio"]:checked + label {
+  background-color: #e9400a;
+  /* background-color: #4caf50; */
+  color: white;
+  /* border: 1px solid #4caf50; */
+}
+
+.size-selector input[type="radio"]:checked + label::before {
+  content: "✔️";
+  margin-right: 5px;
+}
+
+/* Hover effect for size options */
+.size-option:hover {
+  background-color: #ddd;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantity input[type="number"] {
+  width: 40px;
+  text-align: center;
+  font-size: 16px;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.quantity button {
+  background-color: #e9400a;
+  /* background-color: #4caf50; */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+/* For modern browsers (Chrome, Safari, Edge) */
+.quantity input[type="number"]::-webkit-outer-spin-button,
+.quantity input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For Firefox */
+.quantity input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* .quantity button:hover {
+  background-color: #45a049;
+} */
+
+.quantity button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+button#full-catalogue-cart {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  width: 100%;
+  background-color: #e9400a;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+@media (max-width: 768px) {
   .details-container {
     flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .details-container {
+    flex-direction: column;
+  }
+
+  .brandpicture-container,
+  .brand-container-details {
+    width: 100%;
+  }
+
+  .size-option {
+    padding: 8px 8px;
+  }
+
+  .size-selector,
+  .quantity {
+    padding: 10px 0px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  button#full-catalogue-cart {
+    padding-top: 20px;
   }
 }
