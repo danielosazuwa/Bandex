@@ -18,7 +18,8 @@
 
 
 
-        <form action="/add-to-cart" method="POST">
+        <div id="error-message" style="color: red; display: none;">Please specify the size.</div>
+        <form id="sizeForm" action="/add-to-cart" method="POST">
           <input type="hidden" name="productId" value="<%= catalogue._id %>">
           <div class="size-selector">
             <!-- <input type="radio" name="size" value="xs" id="size-xs" />
@@ -42,7 +43,7 @@
   
           <div class="quantity">
             <button type="button" class="decrease">-</button>
-            <input type="number" name="quantity" class="quantity-input" value="1" min="1" />
+            <input type="number" name="quantity" class="quantity-input" value="1" min="1"/>
             <button type="button" class="increase">+</button>
           </div>
           <button id="full-catalogue-cart" type="submit">         <i class="fa-solid fa-cart-shopping fa-flip-horizontal" style="color: white"></i>
@@ -52,6 +53,7 @@
     </div>
   </div>
 </div>
+
 
 
 <%- include("partials/footer") %>

@@ -17,8 +17,14 @@
       <div class="cart-details">
         <h2><%= item.product.brand %></h2>
         <p>Price: <%= item.product.currency %><%= item.product.price %></p>
-        <p>Quantity: <%= item.quantity %></p>
-        <p>Size: <%= item.size %></p>
+        <p>
+          Quantity: <% if(!item.quantity){%> Specify quantity <%}else{%> <%=
+          item.quantity %> <%} %>
+        </p>
+        <p>
+          Size: <% if(!item.size){%> Specify size <%}else{%> <%= item.size %>
+          <%} %>
+        </p>
       </div>
     </div>
   </a>

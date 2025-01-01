@@ -158,26 +158,15 @@ a.shop-now-nav-btn {
 }
 
 .phone-nav {
+  width: 100%;
+  /* background: red; */
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding: 20px 4px;
 }
 
-.phone-nav div:nth-child(1) {
-  width: 10%;
-}
-.phone-nav div:nth-child(2) {
-  /* background: tomato; */
-  /* padding: 20px 0px; */
-  width: 20%;
-}
-.phone-nav div:nth-child(3) {
-  width: 20%;
-  display: flex;
-  justify-content: flex-end;
-  /* background:red */
-}
+
 .phone-nav button {
   background: #fff;
   color: #e9400a;
@@ -351,6 +340,19 @@ figcaption {
 }
 /*VISION SECTION*/
 
+button#home-page-cart {
+  background: #e9400a;
+  width: 100%;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+
+
 /*FOOTER SECTION*/
 footer {
   height: 20vh;
@@ -411,5 +413,13 @@ footer {
 
   .phone-nav {
     display: flex;
+    /* background: red; */
+  }
+
+  .phone-nav>div>button{
+    background: none;
+    height: 50px;
+    width: 100%;
+    
   }
 }

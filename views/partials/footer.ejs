@@ -45,6 +45,8 @@
   crossorigin="anonymous"
 ></script>
 
+
+<!--loader-->
 <script>
 window.addEventListener("load", () => {
   const loader = document.querySelector(".loader");
@@ -55,6 +57,10 @@ window.addEventListener("load", () => {
   });
 });
 </script>
+<!--loader-->
+
+
+<!--Phone nav-->
 <script>
   function toggleNav() {
       const navList = document.getElementById('nav-list');
@@ -72,6 +78,10 @@ window.addEventListener("load", () => {
     }
   
   </script>
+<!--Phone nav-->
+
+
+<!--Increase and decrease quantity button-->
   <script>
     document.querySelector('.increase').addEventListener('click', function() {
   const input = document.querySelector('.quantity-input');
@@ -87,6 +97,22 @@ document.querySelector('.decrease').addEventListener('click', function() {
   }
 });
   </script>
+<!--Increase and decrease quantity button-->
+
+<!--Size required-->
+<script>
+  document.getElementById("sizeForm").addEventListener("submit", function(event) {
+      const radioButtons = document.querySelectorAll('input[name="size"]');
+      const isSelected = Array.from(radioButtons).some(radio => radio.checked);
+      
+      if (!isSelected) {
+          document.getElementById("error-message").style.display = "block";
+          event.preventDefault(); // Prevent form submission
+      }
+  });
+  </script>
+<!--Size required-->
+
 <script src="/js/script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

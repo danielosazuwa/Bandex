@@ -3,6 +3,7 @@ const router = express.Router();
 const path = require("path");
 const isAuthenticated = require("../routes/auth");
 const uploadCollection = require("../model/upload");
+const flash = require('connect-flash')
 // const _ = require("lodash");
 
 // Route to view the cart
@@ -24,11 +25,14 @@ router.post("/add-to-cart", async (req, res) => {
     return res.status(400).json({ message: "Invalid product" });
   }
 
+
   try {
     const product = await uploadCollection.findById(productId);
     if (!product) {
       return res.status(404).json({ message: "Product not found" });
     }
+
+
 
     if (!req.session.cart) {
       req.session.cart = [];
@@ -51,7 +55,7 @@ router.post("/add-to-cart", async (req, res) => {
     //   req.session.cart.push({ product });
     // }
 
-    res.redirect("/cart");
+    res.redirect(`/cart`);
   } catch (err) {
     res.status(500).send("Error adding product to cart");
   }

@@ -5,6 +5,7 @@ const cookies = require("cookie-parser");
 const { v4: uuidv4 } = require("uuid");
 const methodOverride = require("method-override");
 const connection = require("./database/connection");
+const flash = require('connect-flash');
 const path = require("path");
 
 dotenv.config({ path: "config.env" });
@@ -40,6 +41,9 @@ app.use(
     cookie: { secure: false, maxAge: 1000 * 60 * 60 * 24 },
   })
 );
+
+//Middleware for flash messages
+app.use(flash());
 
 //import routes
 const userRoutes = require("./routes/User"); //root route
